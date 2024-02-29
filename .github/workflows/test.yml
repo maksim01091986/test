@@ -19,6 +19,9 @@ jobs:                                                                        # B
     steps:                                                                   # Blocks of STEPS. Like blocks in "Ansible".
     - name: Check az cli
       run: az --version
+    
+    - name: Check zip
+      run: zip --version
 
 #    - name: Print Hello Message in Testing                                   # name of step 2
 #      run: echo "Hello World from Testing job"                               # Executing COMMANDS. May be few, in that case you must use pipe "|"
