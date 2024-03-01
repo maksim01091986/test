@@ -17,6 +17,9 @@ jobs:                                                                        # B
     runs-on: ubuntu-latest                                                   # Named as "runner". Type of OS (Docker image with certain OS) which will execute commands . Could be few : [ubuntu-latest, windows-2019, e.t.c]
 
     steps:                                                                   # Blocks of STEPS. Like blocks in "Ansible".
+    - name: Git clone my repo                                                # name of step 4
+      uses: actions/checkout@v4                                              # Instruction for executing script (GitHub Action script which cloning your repository to the "runner")
+      
     - name: Login to Yandex Cloud Container Registry
       id: login-cr
       uses: yc-actions/yc-cr-login@v2                                        # https://github.com/yc-actions/yc-cr-login?tab=readme-ov-file
