@@ -41,9 +41,10 @@ jobs:                                                                        # B
       run: curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
 
     - name: Reboot user's environments
-      run: |
-        source "/home/runner/.bashrc"
-        yc version
+      run: exec -l $SHELL
+
+    - name: Check yc cli
+      run: yc version
 
 #    - name: Check YC CLI version
 #      run: yc version
