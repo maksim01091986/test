@@ -38,12 +38,12 @@ jobs:                                                                        # B
     
     
     - name: Install yc CLI
-      shell: bash
+#      shell: bash
       run: |
         curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
         echo $?
 
-    - name: List and grep envs
+    - name: Add bin to PATH and check YC CLI version
       run: |
         ls -la ~
         ls -l ~/yandex-cloud/bin
@@ -54,6 +54,13 @@ jobs:                                                                        # B
         echo $?
         echo $PATH
         yc version
+    - name: Create profile for service-account and add creds for it
+      run: |
+        yc config profile create sa-profile
+        yc config set service-account-key ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+        yc config profile list
+        yc config list
+
       
 #    - name: List directory
 #      run: ls -l
