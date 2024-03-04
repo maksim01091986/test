@@ -42,7 +42,9 @@ jobs:                                                                        # B
       run: curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
 
     - name: List and grep envs
-      run: env | grep PATH
+      run: |
+        pwd
+        ls -l $pwd
       
 #    - name: List directory
 #      run: ls -l
