@@ -41,10 +41,12 @@ jobs:                                                                        # B
       run: curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
 
     - name: Reboot user's environments
-      run: source /home/runner/.bashrc
+      run: |
+        source "/home/runner/.bashrc"
+        yc version
 
-    - name: Check YC CLI version
-      run: yc version
+#    - name: Check YC CLI version
+#      run: yc version
 
 #    - name: Print Hello Message in Testing                                   # name of step 2
 #      run: echo "Hello World from Testing job"                               # Executing COMMANDS. May be few, in that case you must use pipe "|"
