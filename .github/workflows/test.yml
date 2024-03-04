@@ -34,6 +34,9 @@ jobs:                                                                        # B
       run: |
         docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
         docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
+    
+    - name: Check yc CLI
+      run: yc version
 
 #    - name: Print Hello Message in Testing                                   # name of step 2
 #      run: echo "Hello World from Testing job"                               # Executing COMMANDS. May be few, in that case you must use pipe "|"
