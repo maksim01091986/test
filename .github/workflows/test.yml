@@ -54,6 +54,7 @@ jobs:                                                                        # B
         echo $?
         echo $PATH
         yc version
+        yc --help
     - name: Create profile for service-account and add creds for it
       run: |
         yc config profile create sa-profile
