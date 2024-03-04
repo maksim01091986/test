@@ -40,14 +40,20 @@ jobs:                                                                        # B
     - name: Install yc CLI 
       run: curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
 
-    - name: Reboot user's environments
-      run: source /home/runner/.bashrc
+    - name: List envs
+      run: env
+      
+    - name: List directory
+      run: ls -l
 
-    - name: Execute few commands 
-      run: ls -l /home/runner/yandex-cloud
-
-    - name: execute some command
-      run: grep --help
+#    - name: Reboot user's environments
+#      run: source /home/runner/.bashrc
+#
+#    - name: Execute few commands 
+#      run: ls -l /home/runner/yandex-cloud
+#
+#    - name: execute some command
+#      run: grep --help
     
 
 #    - name: Check YC CLI version
