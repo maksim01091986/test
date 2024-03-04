@@ -43,8 +43,9 @@ jobs:                                                                        # B
 
     - name: List and grep envs
       run: |
-        pwd
-        ls -l $pwd
+        ls -la ~
+        ls -l ~/yandex-cloud/bin
+        env | grep PATH
       
 #    - name: List directory
 #      run: ls -l
