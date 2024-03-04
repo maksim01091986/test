@@ -49,9 +49,11 @@ jobs:                                                                        # B
         ls -l ~/yandex-cloud/bin
         echo $PATH
         export PATH=$PATH:/home/runner/yandex-cloud/bin
-        source /home/runner/.bashrc
-        echo $PATH
         echo $?
+        source /home/runner/.bashrc
+        echo$?
+        echo $PATH
+        yc version
       
 #    - name: List directory
 #      run: ls -l
