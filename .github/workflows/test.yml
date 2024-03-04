@@ -55,14 +55,8 @@ jobs:                                                                        # B
         echo $PATH
         yc version
         yc --help
-    - name: Create profile for service-account and add creds for it
-      run: |
-        yc config profile create sa-profile
-        yc config set service-account-key ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+        yc config profile create sa-account
         yc config profile list
-        yc config list
-
-      
 #    - name: List directory
 #      run: ls -l
 
