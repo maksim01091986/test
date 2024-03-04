@@ -44,9 +44,11 @@ jobs:                                                                        # B
       run: source /home/runner/.bashrc
 
     - name: Execute few commands 
-      run: |
-        ls -l /home/runner/yandex-cloud
-        env | grep yandex
+      run: ls -l /home/runner/yandex-cloud
+
+    - name: execute some command
+      run: env | grep yandex
+    
 
 #    - name: Check YC CLI version
 #      run: yc version
