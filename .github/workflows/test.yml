@@ -48,7 +48,7 @@ jobs:                                                                        # B
         ls -la ~
         ls -l ~/yandex-cloud/bin
         echo $PATH
-        export PATH=$PATH:/home/runner/yandex-cloud/bin >> /home/runner/.bashrc
+        echo "/home/runner/yandex-cloud/bin" >> "{{github.path}}"
         echo $?
         source /home/runner/.bashrc
         echo $?
