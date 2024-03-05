@@ -48,12 +48,12 @@ jobs:                                                                        # B
         ls -la ~
         ls -l ~/yandex-cloud/bin
         echo $PATH
-        echo "/home/runner/yandex-cloud/bin" >> $GITHUB_PATH
+        echo "export PATH=$PATH:/home/runner/yandex-cloud/bin" >> /home/runner/.bashrc
         echo $?
-        echo $GITHUB_PATH
+        cat /home/runner/.bashrc
         source /home/runner/.bashrc
         echo $?
-        echo $GITHUB_PATH
+        cat /home/runner/.bashrc
         echo $PATH
         yc version
         yc --help
