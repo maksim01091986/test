@@ -42,23 +42,24 @@ jobs:                                                                        # B
       run: |
         curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
         echo $?
+        env | grep PATH
 
-    - name: Add bin to PATH and check YC CLI version
-      run: |
-        ls -la ~
-        ls -l ~/yandex-cloud/bin
-        echo $PATH
-        echo "export PATH=$PATH:/home/runner/yandex-cloud/bin" >> /home/runner/.bashrc
-        echo $?
-        cat /home/runner/.bashrc
-        source /home/runner/.bashrc
-        echo $?
-        cat /home/runner/.bashrc
-        echo $PATH
-        yc version
-        yc --help
-        yc config profile create sa-account
-        yc config profile list
+#    - name: Add bin to PATH and check YC CLI version
+#      run: |
+#        ls -la ~
+#        ls -l ~/yandex-cloud/bin
+#        echo $PATH
+#        echo "export PATH=$PATH:/home/runner/yandex-cloud/bin" >> /home/runner/.bashrc
+#        echo $?
+#        cat /home/runner/.bashrc
+#        source /home/runner/.bashrc
+#        echo $?
+#        cat /home/runner/.bashrc
+#        echo $PATH
+#        yc version
+#        yc --help
+#       yc config profile create sa-account
+#        yc config profile list
 #    - name: ddd
 #      run: |
 #        echo $PATH
