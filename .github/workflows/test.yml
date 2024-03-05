@@ -50,10 +50,10 @@ jobs:                                                                        # B
         echo $PATH
         echo "/home/runner/yandex-cloud/bin" >> "{{github.path}}"
         echo $?
-        echo {{github.path}}
+        echo "{{github.path}}"
         source /home/runner/.bashrc
         echo $?
-        echo {{github.path}}
+        echo "{{github.path}}"
         echo $PATH
         yc version
         yc --help
