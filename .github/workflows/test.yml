@@ -48,10 +48,11 @@ jobs:                                                                        # B
         ls -la ~
         ls -l ~/yandex-cloud/bin
         echo $PATH
-        export PATH=$PATH:/home/runner/yandex-cloud/bin
+        export PATH=$PATH:/home/runner/yandex-cloud/bin >> /home/runner/.bashrc
         echo $?
         source /home/runner/.bashrc
         echo $?
+        cat /home/runner/.bashrc
         echo $PATH
         yc version
         yc --help
