@@ -50,18 +50,19 @@ jobs:                                                                        # B
         echo $PATH
         echo "/home/runner/yandex-cloud/bin" >> "{{github.path}}"
         echo $?
+        echo {{github.path}}
         source /home/runner/.bashrc
         echo $?
-        cat /home/runner/.bashrc
+        echo {{github.path}}
         echo $PATH
         yc version
         yc --help
         yc config profile create sa-account
         yc config profile list
-    - name: ddd
-      run: |
-        echo $PATH
-        yc config list
+#    - name: ddd
+#      run: |
+#        echo $PATH
+#        yc config list
 #    - name: List directory
 #      run: ls -l
 
