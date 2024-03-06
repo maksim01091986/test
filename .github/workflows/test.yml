@@ -72,9 +72,12 @@ jobs:                                                                        # B
         kubectl config get-contexts
         kubectl get ns
     
+    - name: Git clone my repo                                                # name of step 4
+      uses: actions/checkout@v4                                              # Instruction for executing script (GitHub Action script which cloning your repository to the "runner")
+    
     - name: deploy to Kubernetes
       run: |
-        cd Kubernetes
+        cd kubernetes
         kubectl apply -f namespace.yaml
         kubectl apply -f deploy.yaml
         kubectl apply -f service.yaml
