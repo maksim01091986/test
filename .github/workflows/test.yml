@@ -57,8 +57,9 @@ jobs:                                                                        # B
         export PATH=$PATH:/home/runner/yandex-cloud/bin
         yc config profile create sa-account
         yc config profile list
-        echo "${{ secrets.YC_SA_KUB_JSON_CREDENTIALS }}" | tee key.json
+        echo "${{ vars.YC_SA_KUB_JSON_CREDENTIALS }}" | tee key.json
         ls -l `pwd`
+        cat key.json
         yc config set service-account-key ./key.json
         yc config list
         rm -f ./key.json
