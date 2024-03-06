@@ -57,8 +57,7 @@ jobs:                                                                        # B
         export PATH=$PATH:/home/runner/yandex-cloud/bin
         yc config profile create sa-account
         yc config profile list
-        echo "${{ vars.YC_SA_KUB_JSON_CREDENTIALS }}" > kkk
-        echo $?
+        echo "${{ vars.YC_SA_KUB_JSON_CREDENTIALS }}" | tee kkk
 
     - name: Get credentials from cluster
       run: |
