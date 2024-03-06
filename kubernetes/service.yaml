@@ -1,0 +1,18 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: service
+  namespace: test
+  labels:
+    project: "yandex"
+spec:
+  selector:
+    app: service
+    env: test
+  #type: ClusterIP
+  type: LoadBalancer
+  ports:
+  - name: app
+    port: 3710
+    targetPort: 80

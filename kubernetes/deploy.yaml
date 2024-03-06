@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service
+  namespace: test
+  labels:
+    project: "yandex"
+    app: service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: "yandex"
+      app: service
+      env: test
+  template:
+    metadata:
+      labels:
+        project: "yandex"
+        app: service
+        env: test
+    spec:
+      containers:
+      - name: service
+        image: cr.yandex/crp1u0sq9ek5h31a1ttu/simple-webapp-image:1
+        #image: "hello-world"
+        #image: maximus123123/mynginx:latest
+        ports:
+          - containerPort: 80
+        imagePullPolicy: Always
+        #volumeMounts:
+        #  - name: env
+        #    mountPath: "/app/.env"
+        #    subPath: .env
+        #    readOnly: true
+      restartPolicy: Always
+      #priorityClassName: service
+      #volumes:
+      #  - name:  env
+      #    configMap:
+      #      name: env
