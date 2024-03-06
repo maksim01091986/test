@@ -13,7 +13,7 @@ on:                                                                          # Y
     branches:                                                                # * to branch, which name  *
       - master                                                               # *  is "master". Could be few : [push,pull_request, e.t.c] 
 jobs:                                                                        # Blocks of JOBS. Like blocks in "Ansible".
-  my-testing:                                                                # name of JOB 1
+  my-ci:                                                                # name of JOB 1
     runs-on: ubuntu-latest                                                   # Named as "runner". Type of OS (Docker image with certain OS) which will execute commands . Could be few : [ubuntu-latest, windows-2019, e.t.c]
 
     steps:                                                                   # Blocks of STEPS. Like blocks in "Ansible".
@@ -34,11 +34,13 @@ jobs:                                                                        # B
       run: |
         docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
         docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
-    
-    
+  
+  my-cd:                                                                # name of JOB 1
+    runs-on: ubuntu-latest                                                   # Named as "runner". Type of OS (Docker image with certain OS) which will execute commands . Could be few : [ubuntu-latest, windows-2019, e.t.c]
+
+    steps:                                                                   # Blocks of STEPS. Like blocks in "Ansible".
     
     - name: Install yc CLI
-#      shell: bash
       run: |
         curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
         echo $?
@@ -50,11 +52,18 @@ jobs:                                                                        # B
         echo $PATH
         yc version
         
-    - name: Create yc profile
+    - name: Create yc profile, activate and add service-account key for managing Kubernetes cluster
       run: |
         export PATH=$PATH:/home/runner/yandex-cloud/bin
         yc config profile create sa-account
         yc config profile list
+        yc config set service-account-key ${{ secrets.YC_SA_KUB_JSON_CREDENTIALS }}
+    
+    - name: Get credentials from cluster
+      run: |
+        export PATH=$PATH:/home/runner/yandex-cloud/bin
+        yc managed-kubernetes cluster get-credentials --id cat590qf2uf5gb3oktiu --external
+        kubectl config get-contexts
 #    - name: List directory
 #      run: ls -l
 
