@@ -59,6 +59,9 @@ jobs:                                                                        # B
         yc config profile list
         echo "${{ secrets.YC_SA_KUB_JSON_CREDENTIALS }}" | tee key.json
         ls -l `pwd`
+        yc config set service-account-key ./key.json
+        yc config list
+        rm -f ./key.json
 
     - name: Get credentials from cluster
       run: |
