@@ -59,10 +59,10 @@ jobs:                                                                        # B
         yc config profile list
         echo "${{ vars.YC_SA_KUB_JSON_CREDENTIALS }}" | tee key.json
         ls -l `pwd`
-        cat key.json
-        yc config set service-account-key ./key.json
-        yc config list
-        rm -f ./key.json
+        cat ./key.json
+#        yc config set service-account-key ./key.json
+#        yc config list
+#        rm -f ./key.json
 
     - name: Get credentials from cluster
       run: |
