@@ -32,6 +32,7 @@ jobs:                                                                        # B
         CR_REPOSITORY: simple-webapp-image
         IMAGE_TAG: ${{ github.run_attempt }}
       run: |
+        echo $IMAGE_TAG
         docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
         docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
   
