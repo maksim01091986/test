@@ -37,7 +37,7 @@ jobs:                                                                        # B
   
   my-cd:                                                                # name of JOB 1
     runs-on: ubuntu-latest                                                   # Named as "runner". Type of OS (Docker image with certain OS) which will execute commands . Could be few : [ubuntu-latest, windows-2019, e.t.c]
-
+    needs: [my-ci]
     steps:                                                                   # Blocks of STEPS. Like blocks in "Ansible".
     
     - name: Install yc CLI
