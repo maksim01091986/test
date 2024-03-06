@@ -51,21 +51,19 @@ jobs:                                                                        # B
         echo $?
         echo $PATH
         yc version
-   
-    - name: Git clone my repo                                                # name of step 4
-      uses: actions/checkout@v4
-        
+    
     - name: Create yc profile, activate and add service-account key for managing Kubernetes cluster
+      env:
+        YC_SA_KUB_JSON_CREDENTIALS: ${{ secrets.YC_SA_KUB_JSON_CREDENTIALS }}
       run: |
         export PATH=$PATH:/home/runner/yandex-cloud/bin
         yc config profile create sa-account
         yc config profile list
+        echo $YC_SA_KUB_JSON_CREDENTIALS > key.json
+        ls -l `pwd`
         yc config set service-account-key ./key.json
-#        echo "${{ vars.YC_SA_KUB_JSON_CREDENTIALS }}" | tee key.json
-#        ls -l `pwd`
-#        cat ./key.json
-#        yc config list
-#        rm -f ./key.json
+        yc config list
+        rm -f ./key.json
 
     - name: Get credentials from cluster
       run: |
