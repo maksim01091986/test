@@ -57,11 +57,10 @@ jobs:                                                                        # B
         export PATH=$PATH:/home/runner/yandex-cloud/bin
         yc config profile create sa-account
         yc config profile list
-        echo ${{ secrets.YC_SA_KUB_JSON_CREDENTIALS }} > /`pwd`/key.json
-        echo $?
-        yc config set service-account-key /'pwd`/key.json
-#        rm -f /`pwd`/key.json
-#        yc config list
+        echo ${{ secrets.YC_SA_KUB_JSON_CREDENTIALS }} > /`pwd`/key.json 
+        yc config set service-account-key /`pwd`/key.json
+        rm -f /`pwd`/key.json
+        yc config list
     
     - name: Get credentials from cluster
       run: |
