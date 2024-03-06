@@ -61,7 +61,7 @@ jobs:                                                                        # B
         echo zzzz > xz.json
         ls -l $(pwd)
         cat xz.json
-        echo ${{ secrets.YC_SA_KUB_JSON_CREDENTIALS }} 
+        echo ${{ vars.YC_SA_KUB_JSON_CREDENTIALS }} 
         echo ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 #        yc config set service-account-key /$(pwd)/key.json
 #        rm -f //$(pwd)/key.json
