@@ -62,14 +62,23 @@ jobs:                                                                        # B
         echo $YC_SA_KUB_JSON_CREDENTIALS > key.json
         ls -l `pwd`
         yc config set service-account-key ./key.json
-        yc config list
         rm -f ./key.json
+        yc config list
 
     - name: Get credentials from cluster
       run: |
         export PATH=$PATH:/home/runner/yandex-cloud/bin
         yc managed-kubernetes cluster get-credentials --id cat590qf2uf5gb3oktiu --external
         kubectl config get-contexts
+        kubectl get ns
+    
+    - name: deploy to Kubernetes
+      run: |
+        cd Kubernetes
+        kubectl apply -f namespace.yaml
+        kubectl apply -f deploy.yaml
+        kubectl apply -f service.yaml
+        
 #    - name: List directory
 #      run: ls -l
 
