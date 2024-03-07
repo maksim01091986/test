@@ -30,7 +30,7 @@ jobs:                                                                        # B
       env:
         CR_REGISTRY: crp1u0sq9ek5h31a1ttu
         CR_REPOSITORY: simple-webapp-image
-        IMAGE_TAG: ${{ github.run_attempt }}
+        IMAGE_TAG: ${{ github.run_id }}
       run: |
         echo $IMAGE_TAG
         docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
@@ -75,6 +75,14 @@ jobs:                                                                        # B
     
     - name: Git clone my repo                                                # name of step 4
       uses: actions/checkout@v4                                              # Instruction for executing script (GitHub Action script which cloning your repository to the "runner")
+
+    - name: preparing files to deploy
+      env:
+        CR_REGISTRY: crp1u0sq9ek5h31a1ttu
+        CR_REPOSITORY: simple-webapp-image
+        IMAGE_TAG: ${{ github.run_id }}
+        FULL_IMAGE_NAME: "cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG"
+      run: sed -i "s#\[image\]#$IMAGE_FULL_NAME#" deploy.yaml
     
     - name: deploy to Kubernetes
       run: |
