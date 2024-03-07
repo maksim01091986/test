@@ -30,7 +30,7 @@ jobs:                                                                        # B
       env:
         CR_REGISTRY: crp1u0sq9ek5h31a1ttu
         CR_REPOSITORY: simple-webapp-image
-        IMAGE_TAG: ${{ github.run_id }}
+        IMAGE_TAG: ${{ github.run_number }}
       run: |
         echo $IMAGE_TAG
         docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
@@ -80,9 +80,11 @@ jobs:                                                                        # B
       env:
         CR_REGISTRY: crp1u0sq9ek5h31a1ttu
         CR_REPOSITORY: simple-webapp-image
-        IMAGE_TAG: ${{ github.run_id }}
+        IMAGE_TAG: ${{ github.run_number }}
         FULL_IMAGE_NAME: "cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG"
-      run: sed -i "s#\[image\]#$IMAGE_FULL_NAME#" deploy.yaml
+      run: |
+        cd kubernetes
+        sed -i "s#\[image\]#$IMAGE_FULL_NAME#" deploy.yaml
     
     - name: deploy to Kubernetes
       run: |
