@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: service
-        image: cr.yandex/crp1u0sq9ek5h31a1ttu/simple-webapp-image:1
+        image: [image]
         #image: "hello-world"
         #image: maximus123123/mynginx:latest
         ports:
