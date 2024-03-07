@@ -81,10 +81,11 @@ jobs:                                                                        # B
         CR_REGISTRY: crp1u0sq9ek5h31a1ttu
         CR_REPOSITORY: simple-webapp-image
         IMAGE_TAG: ${{ github.run_number }}
-        FULL_IMAGE_NAME: "cr.yandex/${{CR_REGISTRY}}/${{CR_REPOSITORY}}:${{IMAGE_TAG}}"
+#        FULL_IMAGE_NAME: "cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG"
       run: |
-        cd kubernetes
+        FULL_IMAGE_NAME="cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG"
         echo $FULL_IMAGE_NAME
+        cd kubernetes
         sed -i "s#\[image\]#$FULL_IMAGE_NAME#" deploy.yaml
         cat deploy.yaml
     
