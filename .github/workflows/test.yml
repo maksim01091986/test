@@ -84,6 +84,7 @@ jobs:                                                                        # B
         FULL_IMAGE_NAME: "cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG"
       run: |
         cd kubernetes
+        echo $FULL_IMAGE_NAME
         sed -i "s#\[image\]#$FULL_IMAGE_NAME#" deploy.yaml
         cat deploy.yaml
     
