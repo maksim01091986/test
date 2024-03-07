@@ -85,6 +85,7 @@ jobs:                                                                        # B
       run: |
         cd kubernetes
         sed -i "s#\[image\]#$IMAGE_FULL_NAME#" deploy.yaml
+        cat deploy.yaml
     
     - name: deploy to Kubernetes
       run: |
