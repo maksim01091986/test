@@ -10,8 +10,8 @@ spec:
   selector:
     app: service
     env: test
-  #type: ClusterIP
-  type: LoadBalancer
+  type: ClusterIP
+  #type: LoadBalancer
   ports:
   - name: app
     port: 3710
