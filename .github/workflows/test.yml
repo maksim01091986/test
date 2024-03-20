@@ -69,7 +69,7 @@ jobs:                                                                        # B
     - name: Get credentials from cluster
       run: |
         export PATH=$PATH:/home/runner/yandex-cloud/bin
-        yc managed-kubernetes cluster get-credentials --id cat590qf2uf5gb3oktiu --external
+        yc managed-kubernetes cluster get-credentials --id cathkqli20ga8l3rs3kh --external
         kubectl config get-contexts
         kubectl get ns
     
